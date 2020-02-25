@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Counter',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Counter'),
     );
   }
 }
@@ -46,16 +46,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -101,11 +92,50 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+      
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(left:30),
+        child: Row(
+          
+          
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+          
+         
+
+          FloatingActionButton.extended(
+            icon: Icon(Icons.add),
+            onPressed: _incrementCounter, label: Text("Add"),),
+          SizedBox(width: 50,),
+        FloatingActionButton.extended(
+          icon:  Icon(Icons.remove),
+          onPressed: _decrementCounter, label: Text("Subtract"),)],),
+                ),// This trailing comma makes auto-formatting nicer for build methods.
+              );
+            }
+          
+            void _decrementCounter() {
+
+               setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter--;
+    });
+
+
+  }
+
+   void _incrementCounter() {
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter++;
+    });
   }
 }
